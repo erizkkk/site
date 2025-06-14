@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <title>Mensagem Especial</title>
+    <script>
+        // Função para mostrar uma mensagem aleatória da lista passada pelo Flask
+        function mostrarMensagem() {
+            // Pega as mensagens que foram inseridas no template via Flask
+            const mensagens = {{ mensagens|tojson }};
+            // Escolhe uma mensagem aleatória
+            const msg = mensagens[Math.floor(Math.random() * mensagens.length)];
+            // Mostra no elemento com id 'msg'
+            document.getElementById('msg').innerText = msg;
+        }
+    </script>
+</head>
+<body>
+    <h1>Clique no botão para uma mensagem especial!</h1>
+    <button onclick="mostrarMensagem()">Mostrar mensagem</button>
+    <p id="msg" style="margin-top:20px; font-size: 18px; color: #333;"></p>
+</body>
+</html>
